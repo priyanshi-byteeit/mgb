@@ -33,7 +33,7 @@
     width: 6
     height: 4
     custom_color_enabled: true
-    background_color: "#1A73B8"
+    background_color: "#0484C4"
     font_color: "#FFFFFF"
 
   - title: "Revenue by Stream"
@@ -80,7 +80,7 @@
     width: 6
     height: 4
     custom_color_enabled: true
-    background_color: "#5CA271"
+    background_color: "#009983"
     font_color: "#FFFFFF"
 
   - title: "Top Machine Models Sold"
@@ -130,7 +130,7 @@
     width: 6
     height: 4
     custom_color_enabled: true
-    background_color: "#C97A9C"
+    background_color: "#E65768"
     font_color: "#FFFFFF"
 
   - title: "Service Revenue by Type"
@@ -178,7 +178,7 @@
     width: 6
     height: 4
     custom_color_enabled: true
-    background_color: "#8B6FB5"
+    background_color: "#9C40B8"
     font_color: "#FFFFFF"
 
   - title: "Parts Sales by Branch"
