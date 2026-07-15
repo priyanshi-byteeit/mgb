@@ -25,11 +25,13 @@
     explore: unified_revenue
     type: single_value
     fields: [unified_revenue.total_revenue]
-    conditional_formatting:
-    - type: greater than
-      value: 0
-      background_color: "#0484C4"
-      font_color: "#FFFFFF"
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
+        apply_formatting_to_row: false,
+        cell_format: {background_color: "#0484C4", font_color: "#FFFFFF"},
+        apply_to: allNumericFields}]
     listen:
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
@@ -74,11 +76,13 @@
     explore: fact_machine_sales
     type: single_value
     fields: [fact_machine_sales.total_invoice_amount]
-    conditional_formatting:
-    - type: greater than
-      value: 0
-      background_color: "#009983"
-      font_color: "#FFFFFF"
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
+        apply_formatting_to_row: false,
+        cell_format: {background_color: "#009983", font_color: "#FFFFFF"},
+        apply_to: allNumericFields}]
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
@@ -126,11 +130,13 @@
     explore: fact_service_revenue
     type: single_value
     fields: [fact_service_revenue.total_sale_amount]
-    conditional_formatting:
-    - type: greater than
-      value: 0
-      background_color: "#E65768"
-      font_color: "#FFFFFF"
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
+        apply_formatting_to_row: false,
+        cell_format: {background_color: "#E65768", font_color: "#FFFFFF"},
+        apply_to: allNumericFields}]
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
@@ -176,11 +182,13 @@
     explore: fact_parts_sales
     type: single_value
     fields: [fact_parts_sales.total_sales_amount]
-    conditional_formatting:
-    - type: greater than
-      value: 0
-      background_color: "#9C40B8"
-      font_color: "#FFFFFF"
+    enable_conditional_formatting: true
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
+        apply_formatting_to_row: false,
+        cell_format: {background_color: "#9C40B8", font_color: "#FFFFFF"},
+        apply_to: allNumericFields}]
     listen:
       date_filter: fact_parts_sales.invoice_date
       branch_filter: dim_branch.branch_name
