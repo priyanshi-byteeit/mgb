@@ -36,10 +36,6 @@
     explore: unified_revenue
     type: single_value
     fields: [unified_revenue.total_revenue]
-    show_comparison: true
-    comparison_type: change
-    show_comparison_label: true
-    comparison_label: "vs. previous period"
     listen:
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
@@ -101,10 +97,6 @@
     explore: fact_machine_sales
     type: single_value
     fields: [fact_machine_sales.total_invoice_amount]
-    show_comparison: true
-    comparison_type: change
-    show_comparison_label: true
-    comparison_label: "vs. previous period"
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
@@ -163,10 +155,6 @@
     explore: fact_service_revenue
     type: single_value
     fields: [fact_service_revenue.total_sale_amount]
-    show_comparison: true
-    comparison_type: change
-    show_comparison_label: true
-    comparison_label: "vs. previous period"
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
@@ -223,10 +211,6 @@
     explore: fact_parts_sales
     type: single_value
     fields: [fact_parts_sales.total_sales_amount]
-    show_comparison: true
-    comparison_type: change
-    show_comparison_label: true
-    comparison_label: "vs. previous period"
     listen:
       date_filter: fact_parts_sales.invoice_date
       branch_filter: dim_branch.branch_name
