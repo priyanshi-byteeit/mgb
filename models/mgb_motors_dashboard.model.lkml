@@ -1,5 +1,6 @@
 connection: "mgb_motors"
 include: "/views/*.view"
+include: "/models/*.dashboard.lookml"
 
 
 explore: unified_revenue {
