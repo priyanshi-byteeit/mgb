@@ -1,6 +1,4 @@
-
-
-- dashboard: mgb_test
+- dashboard: mgb_executive_overview
   title: "MGB Motors – Executive Overview"
   layout: newspaper
   preferred_viewer: dashboards-next
