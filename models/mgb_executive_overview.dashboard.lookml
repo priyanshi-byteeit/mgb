@@ -19,7 +19,7 @@
   elements:
 
   # ===================================================
-  # SECTION 1: TOTAL REVENUE
+  # TOP-LEFT: SECTION 1 — TOTAL REVENUE
   # ===================================================
   - title: ""
     name: section_1_header
@@ -27,7 +27,7 @@
     body_text: "**SECTION 1 — TOTAL REVENUE**"
     row: 0
     col: 0
-    width: 24
+    width: 12
     height: 1
 
   - title: "Total Revenue"
@@ -41,8 +41,8 @@
       branch_filter: dim_branch.branch_name
     row: 1
     col: 0
-    width: 8
-    height: 5
+    width: 4
+    height: 7
 
   - title: "Revenue by Stream"
     name: revenue_by_stream
@@ -60,9 +60,9 @@
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
     row: 1
-    col: 8
-    width: 8
-    height: 8
+    col: 4
+    width: 4
+    height: 7
 
   - title: "Monthly Revenue Trend"
     name: monthly_revenue_trend
@@ -75,20 +75,20 @@
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
     row: 1
-    col: 16
-    width: 8
-    height: 8
+    col: 8
+    width: 4
+    height: 7
 
   # ===================================================
-  # SECTION 2: MACHINE SALES
+  # TOP-RIGHT: SECTION 2 — MACHINE SALES
   # ===================================================
   - title: ""
     name: section_2_header
     type: text
     body_text: "**SECTION 2 — MACHINE SALES**"
-    row: 9
-    col: 0
-    width: 24
+    row: 0
+    col: 12
+    width: 12
     height: 1
 
   - title: "Total Machine Sales"
@@ -100,10 +100,10 @@
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 10
-    col: 0
-    width: 8
-    height: 5
+    row: 1
+    col: 12
+    width: 4
+    height: 7
 
   - title: "Top Machine Models Sold"
     name: top_machine_models
@@ -112,14 +112,14 @@
     type: looker_bar
     fields: [fact_machine_sales.model, fact_machine_sales.total_quantity_sold]
     sorts: [fact_machine_sales.total_quantity_sold desc]
-    limit: 8
+    limit: 6
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 10
-    col: 8
-    width: 8
-    height: 8
+    row: 1
+    col: 16
+    width: 4
+    height: 7
 
   - title: "Dealer-wise Machine Sales"
     name: dealer_machine_sales
@@ -128,25 +128,25 @@
     type: looker_bar
     fields: [dim_branch.branch_name, fact_machine_sales.total_invoice_amount]
     sorts: [fact_machine_sales.total_invoice_amount desc]
-    limit: 8
+    limit: 6
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 10
-    col: 16
-    width: 8
-    height: 8
+    row: 1
+    col: 20
+    width: 4
+    height: 7
 
   # ===================================================
-  # SECTION 3: SERVICE REVENUE
+  # BOTTOM-LEFT: SECTION 3 — SERVICE REVENUE
   # ===================================================
   - title: ""
     name: section_3_header
     type: text
     body_text: "**SECTION 3 — SERVICE REVENUE**"
-    row: 18
+    row: 8
     col: 0
-    width: 24
+    width: 12
     height: 1
 
   - title: "Total Service Revenue"
@@ -158,10 +158,10 @@
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
-    row: 19
+    row: 9
     col: 0
-    width: 8
-    height: 5
+    width: 4
+    height: 7
 
   - title: "Service Revenue by Type"
     name: service_revenue_by_type
@@ -172,10 +172,10 @@
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
-    row: 19
-    col: 8
-    width: 8
-    height: 8
+    row: 9
+    col: 4
+    width: 4
+    height: 7
 
   - title: "Top Service Centers"
     name: top_service_centers
@@ -184,25 +184,25 @@
     type: looker_bar
     fields: [dim_branch.branch_name, fact_service_revenue.total_sale_amount]
     sorts: [fact_service_revenue.total_sale_amount desc]
-    limit: 8
+    limit: 6
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
-    row: 19
-    col: 16
-    width: 8
-    height: 8
+    row: 9
+    col: 8
+    width: 4
+    height: 7
 
   # ===================================================
-  # SECTION 4: PARTS SALES
+  # BOTTOM-RIGHT: SECTION 4 — PARTS SALES
   # ===================================================
   - title: ""
     name: section_4_header
     type: text
     body_text: "**SECTION 4 — PARTS SALES**"
-    row: 27
-    col: 0
-    width: 24
+    row: 8
+    col: 12
+    width: 12
     height: 1
 
   - title: "Total Parts Sales"
@@ -214,10 +214,10 @@
     listen:
       date_filter: fact_parts_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 28
-    col: 0
-    width: 8
-    height: 5
+    row: 9
+    col: 12
+    width: 4
+    height: 7
 
   - title: "Parts Sales by Branch"
     name: parts_sales_by_branch
@@ -226,11 +226,11 @@
     type: looker_bar
     fields: [dim_branch.branch_name, fact_parts_sales.total_sales_amount]
     sorts: [fact_parts_sales.total_sales_amount desc]
-    limit: 8
+    limit: 6
     listen:
       date_filter: fact_parts_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 28
-    col: 8
-    width: 16
-    height: 8
+    row: 9
+    col: 16
+    width: 8
+    height: 7
