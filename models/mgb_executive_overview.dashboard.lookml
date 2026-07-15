@@ -1,5 +1,5 @@
 - dashboard: mgb_executive_overview
-  title: "MGB Motor Dashboard"
+  title: "MGB Motors – Executive Overview"
   layout: newspaper
   preferred_viewer: dashboards-next
 
@@ -18,120 +18,35 @@
 
   elements:
 
-  # ===== KPI ROW =====
+  # ===================================================
+  # SECTION 1: TOTAL REVENUE
+  # ===================================================
+  - title: ""
+    name: section_1_header
+    type: text
+    body_text: "**SECTION 1 — TOTAL REVENUE**"
+    row: 0
+    col: 0
+    width: 24
+    height: 1
+
   - title: "Total Revenue"
     name: total_revenue_kpi
     model: mgb_motors_dashboard
     explore: unified_revenue
     type: single_value
     fields: [unified_revenue.total_revenue]
-    custom_color_enabled: true
-    show_single_value_title: true
-    enable_conditional_formatting: true
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
-        apply_formatting_to_row: false,
-        cell_format: {background_color: "#3730A3", font_color: "#FFFFFF",
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        row_format: {background_color: "#3730A3", font_color: !!null '',
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        apply_to: allNumericFields}]
+    show_comparison: true
+    comparison_type: change
+    show_comparison_label: true
+    comparison_label: "vs. previous period"
     listen:
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
-    row: 0
+    row: 1
     col: 0
     width: 8
-    height: 4
-
-  - title: "Machine Sales"
-    name: total_machine_sales_kpi
-    model: mgb_motors_dashboard
-    explore: fact_machine_sales
-    type: single_value
-    fields: [fact_machine_sales.total_invoice_amount]
-    custom_color_enabled: true
-    show_single_value_title: true
-    enable_conditional_formatting: true
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
-        apply_formatting_to_row: false,
-        cell_format: {background_color: "#FFFFFF", font_color: "#1F2937",
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        row_format: {background_color: "#FFFFFF", font_color: !!null '',
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        apply_to: allNumericFields}]
-    listen:
-      date_filter: fact_machine_sales.invoice_date
-      branch_filter: dim_branch.branch_name
-    row: 0
-    col: 8
-    width: 5
-    height: 4
-
-  - title: "Parts Sales"
-    name: total_parts_sales_kpi
-    model: mgb_motors_dashboard
-    explore: fact_parts_sales
-    type: single_value
-    fields: [fact_parts_sales.total_sales_amount]
-    custom_color_enabled: true
-    show_single_value_title: true
-    enable_conditional_formatting: true
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
-        apply_formatting_to_row: false,
-        cell_format: {background_color: "#FFFFFF", font_color: "#1F2937",
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        row_format: {background_color: "#FFFFFF", font_color: !!null '',
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        apply_to: allNumericFields}]
-    listen:
-      date_filter: fact_parts_sales.invoice_date
-      branch_filter: dim_branch.branch_name
-    row: 0
-    col: 13
-    width: 5
-    height: 4
-
-  - title: "Service Revenue"
-    name: total_service_revenue_kpi
-    model: mgb_motors_dashboard
-    explore: fact_service_revenue
-    type: single_value
-    fields: [fact_service_revenue.total_sale_amount]
-    custom_color_enabled: true
-    show_single_value_title: true
-    enable_conditional_formatting: true
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    conditional_formatting: [{type: greater than, value: 0, fields: !!null '',
-        apply_formatting_to_row: false,
-        cell_format: {background_color: "#FFFFFF", font_color: "#1F2937",
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        row_format: {background_color: "#FFFFFF", font_color: !!null '',
-          font_style: {bold: false, italic: false, strikethrough: false}},
-        apply_to: allNumericFields}]
-    listen:
-      date_filter: fact_service_revenue.doc_date
-      branch_filter: dim_branch.branch_name
-    row: 0
-    col: 18
-    width: 6
-    height: 4
-
-  # ===== SECTION: REVENUE OVERVIEW =====
-  - title: ""
-    name: revenue_overview_header
-    type: text
-    body_text: "**REVENUE OVERVIEW**"
-    row: 4
-    col: 0
-    width: 24
-    height: 1
+    height: 5
 
   - title: "Revenue by Stream"
     name: revenue_by_stream
@@ -148,31 +63,7 @@
     listen:
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
-    row: 5
-    col: 0
-    width: 8
-    height: 8
-
-  - title: "Revenue by Branch"
-    name: revenue_by_branch_map
-    model: mgb_motors_dashboard
-    explore: unified_revenue
-    type: looker_google_map
-    fields: [dim_branch_geo.location, unified_revenue.total_revenue]
-    map_plot_mode: points
-    map_tile_provider: light
-    map_position: fit_data
-    map_marker_type: circle
-    map_marker_radius_mode: proportional_value
-    map_marker_units: pixels
-    map_marker_radius_min: 6
-    map_marker_radius_max: 30
-    map_marker_color_mode: value
-    show_legend: true
-    listen:
-      date_filter: unified_revenue.date_date
-      branch_filter: dim_branch.branch_name
-    row: 5
+    row: 1
     col: 8
     width: 8
     height: 8
@@ -187,20 +78,40 @@
     listen:
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
-    row: 5
+    row: 1
     col: 16
     width: 8
     height: 8
 
-  # ===== SECTION: CATEGORY PERFORMANCE =====
+  # ===================================================
+  # SECTION 2: MACHINE SALES
+  # ===================================================
   - title: ""
-    name: category_performance_header
+    name: section_2_header
     type: text
-    body_text: "**CATEGORY PERFORMANCE**"
-    row: 13
+    body_text: "**SECTION 2 — MACHINE SALES**"
+    row: 9
     col: 0
     width: 24
     height: 1
+
+  - title: "Total Machine Sales"
+    name: total_machine_sales_kpi
+    model: mgb_motors_dashboard
+    explore: fact_machine_sales
+    type: single_value
+    fields: [fact_machine_sales.total_invoice_amount]
+    show_comparison: true
+    comparison_type: change
+    show_comparison_label: true
+    comparison_label: "vs. previous period"
+    listen:
+      date_filter: fact_machine_sales.invoice_date
+      branch_filter: dim_branch.branch_name
+    row: 10
+    col: 0
+    width: 8
+    height: 5
 
   - title: "Top Machine Models Sold"
     name: top_machine_models
@@ -209,14 +120,60 @@
     type: looker_bar
     fields: [fact_machine_sales.model, fact_machine_sales.total_quantity_sold]
     sorts: [fact_machine_sales.total_quantity_sold desc]
-    limit: 6
+    limit: 8
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 14
-    col: 0
+    row: 10
+    col: 8
     width: 8
     height: 8
+
+  - title: "Dealer-wise Machine Sales"
+    name: dealer_machine_sales
+    model: mgb_motors_dashboard
+    explore: fact_machine_sales
+    type: looker_bar
+    fields: [dim_branch.branch_name, fact_machine_sales.total_invoice_amount]
+    sorts: [fact_machine_sales.total_invoice_amount desc]
+    limit: 8
+    listen:
+      date_filter: fact_machine_sales.invoice_date
+      branch_filter: dim_branch.branch_name
+    row: 10
+    col: 16
+    width: 8
+    height: 8
+
+  # ===================================================
+  # SECTION 3: SERVICE REVENUE
+  # ===================================================
+  - title: ""
+    name: section_3_header
+    type: text
+    body_text: "**SECTION 3 — SERVICE REVENUE**"
+    row: 18
+    col: 0
+    width: 24
+    height: 1
+
+  - title: "Total Service Revenue"
+    name: total_service_revenue_kpi
+    model: mgb_motors_dashboard
+    explore: fact_service_revenue
+    type: single_value
+    fields: [fact_service_revenue.total_sale_amount]
+    show_comparison: true
+    comparison_type: change
+    show_comparison_label: true
+    comparison_label: "vs. previous period"
+    listen:
+      date_filter: fact_service_revenue.doc_date
+      branch_filter: dim_branch.branch_name
+    row: 19
+    col: 0
+    width: 8
+    height: 5
 
   - title: "Service Revenue by Type"
     name: service_revenue_by_type
@@ -227,10 +184,56 @@
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
-    row: 14
+    row: 19
     col: 8
     width: 8
     height: 8
+
+  - title: "Top Service Centers"
+    name: top_service_centers
+    model: mgb_motors_dashboard
+    explore: fact_service_revenue
+    type: looker_bar
+    fields: [dim_branch.branch_name, fact_service_revenue.total_sale_amount]
+    sorts: [fact_service_revenue.total_sale_amount desc]
+    limit: 8
+    listen:
+      date_filter: fact_service_revenue.doc_date
+      branch_filter: dim_branch.branch_name
+    row: 19
+    col: 16
+    width: 8
+    height: 8
+
+  # ===================================================
+  # SECTION 4: PARTS SALES
+  # ===================================================
+  - title: ""
+    name: section_4_header
+    type: text
+    body_text: "**SECTION 4 — PARTS SALES**"
+    row: 27
+    col: 0
+    width: 24
+    height: 1
+
+  - title: "Total Parts Sales"
+    name: total_parts_sales_kpi
+    model: mgb_motors_dashboard
+    explore: fact_parts_sales
+    type: single_value
+    fields: [fact_parts_sales.total_sales_amount]
+    show_comparison: true
+    comparison_type: change
+    show_comparison_label: true
+    comparison_label: "vs. previous period"
+    listen:
+      date_filter: fact_parts_sales.invoice_date
+      branch_filter: dim_branch.branch_name
+    row: 28
+    col: 0
+    width: 8
+    height: 5
 
   - title: "Parts Sales by Branch"
     name: parts_sales_by_branch
@@ -239,11 +242,11 @@
     type: looker_bar
     fields: [dim_branch.branch_name, fact_parts_sales.total_sales_amount]
     sorts: [fact_parts_sales.total_sales_amount desc]
-    limit: 6
+    limit: 8
     listen:
       date_filter: fact_parts_sales.invoice_date
       branch_filter: dim_branch.branch_name
-    row: 14
-    col: 16
-    width: 8
+    row: 28
+    col: 8
+    width: 16
     height: 8
