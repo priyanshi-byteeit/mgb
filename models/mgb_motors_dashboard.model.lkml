@@ -1,6 +1,7 @@
 connection: "mgb_motors"
 include: "/views/*.view"
 
+
 explore: unified_revenue {
   label: "Unified Revenue"
   join: dim_branch {
