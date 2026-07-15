@@ -25,6 +25,11 @@
     explore: unified_revenue
     type: single_value
     fields: [unified_revenue.total_revenue]
+    conditional_formatting:
+    - type: greater than
+      value: 0
+      background_color: "#0484C4"
+      font_color: "#FFFFFF"
     listen:
       date_filter: unified_revenue.date_date
       branch_filter: dim_branch.branch_name
@@ -32,9 +37,6 @@
     col: 0
     width: 6
     height: 4
-    custom_color_enabled: true
-    background_color: "#0484C4"
-    font_color: "#FFFFFF"
 
   - title: "Revenue by Stream"
     name: revenue_by_stream
@@ -72,6 +74,11 @@
     explore: fact_machine_sales
     type: single_value
     fields: [fact_machine_sales.total_invoice_amount]
+    conditional_formatting:
+    - type: greater than
+      value: 0
+      background_color: "#009983"
+      font_color: "#FFFFFF"
     listen:
       date_filter: fact_machine_sales.invoice_date
       branch_filter: dim_branch.branch_name
@@ -79,9 +86,6 @@
     col: 6
     width: 6
     height: 4
-    custom_color_enabled: true
-    background_color: "#009983"
-    font_color: "#FFFFFF"
 
   - title: "Top Machine Models Sold"
     name: top_machine_models
@@ -122,6 +126,11 @@
     explore: fact_service_revenue
     type: single_value
     fields: [fact_service_revenue.total_sale_amount]
+    conditional_formatting:
+    - type: greater than
+      value: 0
+      background_color: "#E65768"
+      font_color: "#FFFFFF"
     listen:
       date_filter: fact_service_revenue.doc_date
       branch_filter: dim_branch.branch_name
@@ -129,9 +138,6 @@
     col: 12
     width: 6
     height: 4
-    custom_color_enabled: true
-    background_color: "#E65768"
-    font_color: "#FFFFFF"
 
   - title: "Service Revenue by Type"
     name: service_revenue_by_type
@@ -170,6 +176,11 @@
     explore: fact_parts_sales
     type: single_value
     fields: [fact_parts_sales.total_sales_amount]
+    conditional_formatting:
+    - type: greater than
+      value: 0
+      background_color: "#9C40B8"
+      font_color: "#FFFFFF"
     listen:
       date_filter: fact_parts_sales.invoice_date
       branch_filter: dim_branch.branch_name
@@ -177,9 +188,6 @@
     col: 18
     width: 6
     height: 4
-    custom_color_enabled: true
-    background_color: "#9C40B8"
-    font_color: "#FFFFFF"
 
   - title: "Parts Sales by Branch"
     name: parts_sales_by_branch
