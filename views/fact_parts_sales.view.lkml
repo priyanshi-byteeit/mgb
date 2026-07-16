@@ -72,4 +72,17 @@ view: fact_parts_sales {
     sql: ${return_total} ;;
     value_format_name: usd
   }
+  measure: net_sales_amount {
+    type: number
+    label: "Net Sales (After Returns)"
+    value_format_name: usd
+    sql: SUM(${TABLE}.sp_amount) - SUM(${TABLE}.return_total) ;;
+  }
+
+  measure: return_rate {
+    type: number
+    label: "Return Rate"
+    value_format_name: percent_1
+    sql: 1.0 * SUM(${TABLE}.return_total) / NULLIF(SUM(${TABLE}.sp_amount), 0) ;;
+  }
 }

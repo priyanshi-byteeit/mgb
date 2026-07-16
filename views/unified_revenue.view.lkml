@@ -30,4 +30,27 @@ view: unified_revenue {
     sql: ${amount} ;;
     value_format: "$0.00,,\"M\""
   }
+  measure: machine_sales_revenue {
+    type: sum
+    label: "Machine Sales Revenue"
+    value_format_name: usd
+    sql: ${amount} ;;
+    filters: [revenue_stream: "Machine Sales"]
+  }
+
+  measure: parts_sales_revenue {
+    type: sum
+    label: "Parts Sales Revenue"
+    value_format_name: usd
+    sql: ${amount} ;;
+    filters: [revenue_stream: "Parts Sales (Dealer/Counter)"]
+  }
+
+  measure: service_revenue_total {
+    type: sum
+    label: "Service Revenue"
+    value_format_name: usd
+    sql: ${amount} ;;
+    filters: [revenue_stream: "Service Revenue"]
+  }
 }
