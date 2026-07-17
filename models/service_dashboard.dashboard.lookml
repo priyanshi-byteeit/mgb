@@ -3,6 +3,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   tile_size: 100
+  filters_bar_collapsed: true
   description: "Executive view of service call volume, revenue, and engineer performance."
 
   filters:
@@ -63,7 +64,7 @@
     row: 0
     col: 0
     width: 6
-    height: 3
+    height: 2
 
   - title: Total Service Calls
     name: kpi_total_service_calls
@@ -80,7 +81,7 @@
     row: 0
     col: 6
     width: 6
-    height: 3
+    height: 2
 
   - title: Average Sale Amount
     name: kpi_average_sale_amount
@@ -97,7 +98,7 @@
     row: 0
     col: 12
     width: 6
-    height: 3
+    height: 2
 
   - title: Total Quantity Serviced
     name: kpi_total_quantity
@@ -114,7 +115,7 @@
     row: 0
     col: 18
     width: 6
-    height: 3
+    height: 2
 
   # ================= TREND (dual-line) =================
   - title: Weekly Service Revenue & Call Volume
@@ -123,7 +124,7 @@
     explore: fact_service_revenue
     type: looker_line
     fields: [fact_service_revenue.doc_week, fact_service_revenue.total_sale_amount, fact_service_revenue.total_service_calls]
-    colors: ["#2E5FA3", "#1E9BD7"]
+    colors: ["#2E5FA3", "transparent"]
     point_style: circle
     interpolation: linear
     show_value_labels: false
@@ -143,7 +144,7 @@
     row: 3
     col: 0
     width: 24
-    height: 6
+    height: 5
 
   # ================= BRANCH + SERVICE TYPE + CALL TYPE =================
   - title: Revenue by Branch
@@ -163,7 +164,7 @@
     row: 9
     col: 0
     width: 8
-    height: 7
+    height: 6
 
   - title: Revenue Mix by Service Type
     name: revenue_by_service_type
@@ -182,7 +183,7 @@
     row: 9
     col: 8
     width: 8
-    height: 7
+    height: 6
 
   - title: Calls by Type
     name: calls_by_type
@@ -201,8 +202,9 @@
     row: 9
     col: 16
     width: 8
-    height: 7
+    height: 6
 
+  # ================= ENGINEERS + ITEM GROUP + SUB TYPE =================
   # ================= ENGINEERS + ITEM GROUP + SUB TYPE =================
   - title: Top Engineers by Revenue
     name: top_engineers
@@ -218,8 +220,8 @@
       service_type_filter: fact_service_revenue.service_type
     row: 16
     col: 0
-    width: 8
-    height: 7
+    width: 10
+    height: 6
 
   - title: Revenue by Item Group
     name: revenue_by_item_group
@@ -236,9 +238,9 @@
       branch_filter: fact_service_revenue.branch
       service_type_filter: fact_service_revenue.service_type
     row: 16
-    col: 8
-    width: 8
-    height: 7
+    col: 10
+    width: 7
+    height: 6
 
   - title: Revenue by Sub Type
     name: revenue_by_sub_type
@@ -255,6 +257,6 @@
       branch_filter: fact_service_revenue.branch
       service_type_filter: fact_service_revenue.service_type
     row: 16
-    col: 16
-    width: 8
-    height: 7
+    col: 17
+    width: 7
+    height: 6

@@ -3,6 +3,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   tile_size: 100
+  filters_bar_collapsed: true
   description: "Executive view of parts sales, discounts, returns, and employee performance."
 
   filters:
@@ -63,7 +64,7 @@
     row: 0
     col: 0
     width: 6
-    height: 3
+    height: 2
 
   - title: Net Sales (After Returns)
     name: kpi_net_sales
@@ -71,6 +72,7 @@
     explore: fact_parts_sales
     type: single_value
     fields: [fact_parts_sales.net_sales_amount]
+    value_format: "$0.00,,\"M\""
     custom_color_enabled: true
     custom_color: "#17A2B8"
     listen:
@@ -80,7 +82,7 @@
     row: 0
     col: 6
     width: 6
-    height: 3
+    height: 2
 
   - title: Return Rate
     name: return_rate_kpi
@@ -97,7 +99,7 @@
     row: 0
     col: 12
     width: 6
-    height: 3
+    height: 2
 
   - title: Invoice Count
     name: kpi_invoice_count
@@ -114,7 +116,7 @@
     row: 0
     col: 18
     width: 6
-    height: 3
+    height: 2
 
   # ================= TREND (dual-line) =================
   - title: Weekly Parts Sales & Invoice Volume
@@ -123,7 +125,7 @@
     explore: fact_parts_sales
     type: looker_line
     fields: [fact_parts_sales.invoice_week, fact_parts_sales.total_sales_amount, fact_parts_sales.count]
-    colors: ["#0B3D59", "#17A2B8"]
+    colors: ["#0B3D59", "transparent"]
     point_style: circle
     interpolation: linear
     show_value_labels: false
@@ -143,7 +145,7 @@
     row: 3
     col: 0
     width: 24
-    height: 6
+    height: 5
 
   # ================= BRANCH (bar) + INVOICE TYPE (donut) + BRANCH MAP =================
   - title: Sales by Branch
@@ -163,7 +165,7 @@
     row: 9
     col: 0
     width: 8
-    height: 7
+    height: 6
 
   - title: Sales Mix by Invoice Type
     name: sales_by_invoice_type
@@ -182,7 +184,7 @@
     row: 9
     col: 8
     width: 8
-    height: 7
+    height: 6
 
   - title: Sales by Branch Location
     name: branch_map
@@ -204,9 +206,9 @@
     row: 9
     col: 16
     width: 8
-    height: 7
+    height: 6
 
-  # ================= EMPLOYEES (table) + TOP CUSTOMERS (bar) =================
+# ================= EMPLOYEES (table) + TOP CUSTOMERS (bar) =================
   - title: Top Sales Employees
     name: top_sales_employees
     model: mgb_motors_dashboard
@@ -215,14 +217,15 @@
     fields: [fact_parts_sales.sales_employee, fact_parts_sales.count, fact_parts_sales.total_sales_amount, fact_parts_sales.total_discount_amount]
     sorts: [fact_parts_sales.total_sales_amount desc]
     limit: 10
+    size_to_fit: true
     listen:
       invoice_date_filter: fact_parts_sales.invoice_date
       branch_filter: fact_parts_sales.branch
       invoice_type_filter: fact_parts_sales.invoice_type
     row: 16
     col: 0
-    width: 12
-    height: 7
+    width: 15
+    height: 6
 
   - title: Top Customers by Purchase Value
     name: top_customers_parts
@@ -239,6 +242,6 @@
       branch_filter: fact_parts_sales.branch
       invoice_type_filter: fact_parts_sales.invoice_type
     row: 16
-    col: 12
-    width: 12
-    height: 7
+    col: 15
+    width: 9
+    height: 6

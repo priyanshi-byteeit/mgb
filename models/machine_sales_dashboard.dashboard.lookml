@@ -3,6 +3,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   tile_size: 100
+  filters_bar_collapsed: true
   description: "Executive view of machine sales performance across branches, models, and sales employees."
 
   filters:
@@ -47,13 +48,14 @@
 
   elements:
 
-  # ================= KPI ROW (soft gradient-feel solid colors) =================
+ # ================= KPI ROW (height 2) =================
   - title: Total Invoice Amount
     name: kpi_total_invoice_amount
     model: mgb_motors_dashboard
     explore: fact_machine_sales
     type: single_value
     fields: [fact_machine_sales.total_invoice_amount]
+    value_format: "$0.00,,\"M\""
     custom_color_enabled: true
     custom_color: "#7C5CBF"
     listen:
@@ -63,14 +65,15 @@
     row: 0
     col: 0
     width: 6
-    height: 3
+    height: 2
 
-  - title: Machines Sold (Qty)
-    name: kpi_total_quantity_sold
+  - title: Total Basic Price
+    name: kpi_total_basic_price
     model: mgb_motors_dashboard
     explore: fact_machine_sales
     type: single_value
-    fields: [fact_machine_sales.total_quantity_sold]
+    fields: [fact_machine_sales.total_basic_price]
+    value_format: "$0.00,,\"M\""
     custom_color_enabled: true
     custom_color: "#2E5FA3"
     listen:
@@ -80,14 +83,15 @@
     row: 0
     col: 6
     width: 6
-    height: 3
+    height: 2
 
-  - title: Average Price per Machine
-    name: kpi_average_price_per_machine
+  - title: Total Tax
+    name: kpi_total_tax
     model: mgb_motors_dashboard
     explore: fact_machine_sales
     type: single_value
-    fields: [fact_machine_sales.average_price_per_machine]
+    fields: [fact_machine_sales.total_tax_amount]
+    value_format: "$0.00,,\"M\""
     custom_color_enabled: true
     custom_color: "#1E9BD7"
     listen:
@@ -97,14 +101,15 @@
     row: 0
     col: 12
     width: 6
-    height: 3
+    height: 2
 
-  - title: Invoice Count
-    name: kpi_invoice_count
+  - title: Machines Sold (Qty)
+    name: kpi_total_quantity_sold
     model: mgb_motors_dashboard
     explore: fact_machine_sales
     type: single_value
-    fields: [fact_machine_sales.count]
+    fields: [fact_machine_sales.total_quantity_sold]
+
     custom_color_enabled: true
     custom_color: "#2FAE86"
     listen:
@@ -114,16 +119,19 @@
     row: 0
     col: 18
     width: 6
-    height: 3
+    height: 2
 
-  # ================= TREND (clean dual-line, matching reference style) =================
+  # ================= TREND (height 4, rows 3-7) =================
   - title: Weekly Revenue & Machines Sold
     name: revenue_trend
     model: mgb_motors_dashboard
     explore: fact_machine_sales
     type: looker_line
     fields: [fact_machine_sales.invoice_week, fact_machine_sales.total_invoice_amount, fact_machine_sales.total_quantity_sold]
-    colors: ["#2E5FA3", "#1E9BD7"]
+    colors: ["#2E5FA3", "transparent"]
+    series_colors:
+      "Total Invoice Amount": "#2E5FA3"
+      "Total Quantity Sold": "transparent"
     point_style: circle
     interpolation: linear
     show_value_labels: false
@@ -143,9 +151,9 @@
     row: 3
     col: 0
     width: 24
-    height: 6
+    height: 4
 
-  # ================= BRANCH + MODELS =================
+  # ================= BRANCH + MODELS + SCATTER (height 6, rows 7-13) =================
   - title: Revenue by Branch
     name: revenue_by_branch
     model: mgb_motors_dashboard
@@ -160,10 +168,10 @@
       invoice_date_filter: fact_machine_sales.invoice_date
       branch_filter: fact_machine_sales.branch
       industry_filter: fact_machine_sales.industry
-    row: 9
+    row: 7
     col: 0
     width: 8
-    height: 7
+    height: 5
 
   - title: Top Machine Models by Revenue
     name: top_models
@@ -172,17 +180,17 @@
     type: looker_bar
     fields: [fact_machine_sales.model, fact_machine_sales.total_invoice_amount]
     sorts: [fact_machine_sales.total_invoice_amount desc]
-    limit: 8
+    limit: 6
     colors: ["#1E9BD7"]
     show_value_labels: true
     listen:
       invoice_date_filter: fact_machine_sales.invoice_date
       branch_filter: fact_machine_sales.branch
       industry_filter: fact_machine_sales.industry
-    row: 9
+    row: 7
     col: 8
     width: 8
-    height: 7
+    height: 5
 
   - title: "Model Performance: Volume vs. Price"
     name: model_efficiency_scatter
@@ -195,12 +203,12 @@
       invoice_date_filter: fact_machine_sales.invoice_date
       branch_filter: fact_machine_sales.branch
       industry_filter: fact_machine_sales.industry
-    row: 9
+    row: 7
     col: 16
     width: 8
-    height: 7
+    height: 5
 
-  # ================= DONUTS + TABLE =================
+  # ================= DONUTS + TABLE (height 6, rows 13-19) =================
   - title: Revenue Mix by Industry
     name: sales_by_industry
     model: mgb_motors_dashboard
@@ -215,10 +223,10 @@
       invoice_date_filter: fact_machine_sales.invoice_date
       branch_filter: fact_machine_sales.branch
       industry_filter: fact_machine_sales.industry
-    row: 16
+    row: 13
     col: 0
     width: 8
-    height: 7
+    height: 5
 
   - title: Revenue Mix by Financier
     name: sales_by_financier
@@ -234,10 +242,10 @@
       invoice_date_filter: fact_machine_sales.invoice_date
       branch_filter: fact_machine_sales.branch
       industry_filter: fact_machine_sales.industry
-    row: 16
+    row: 13
     col: 8
     width: 8
-    height: 7
+    height: 5
 
   - title: Sales Employee Performance
     name: sales_employee_performance
@@ -246,12 +254,12 @@
     type: table
     fields: [fact_machine_sales.sales_employee, fact_machine_sales.count, fact_machine_sales.total_invoice_amount]
     sorts: [fact_machine_sales.total_invoice_amount desc]
-    limit: 8
+    limit: 6
     listen:
       invoice_date_filter: fact_machine_sales.invoice_date
       branch_filter: fact_machine_sales.branch
       industry_filter: fact_machine_sales.industry
-    row: 16
+    row: 13
     col: 16
     width: 8
-    height: 7
+    height: 5

@@ -79,4 +79,10 @@ view: fact_machine_sales {
     sql: ${basic_price} ;;
     value_format_name: usd
   }
+  measure: total_tax_amount {
+    type: sum
+    label: "Total Tax"
+    sql: ${tax_amt} ;;
+    value_format_name: usd
+  }
 }
